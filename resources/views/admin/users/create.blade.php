@@ -4,6 +4,7 @@
 
     <h1>Create Users</h1>
 
+
     {!! Form::open(['method'=>'POST', 'action'=>'AdminUsersController@store', 'files'=>true]) !!}
 
         {{csrf_field()}}
@@ -57,7 +58,6 @@
         </div>
 
     {!! Form::close() !!}
-
 
     @include('includes.form_error')
 
