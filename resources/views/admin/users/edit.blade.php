@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Edit Users</h1>
+    <h1>Edit User</h1>
 
     <div class="row">
 
@@ -62,7 +62,21 @@
 
                 <div class="form-group">
 
-                    {!! Form::submit('Create Post', ['class'=>'btn btn-primary']) !!}
+                    {!! Form::submit('Edit Post', ['class'=>'btn btn-primary col-sm-6']) !!}
+
+                </div>
+
+            {!! Form::close() !!}
+
+
+            {{--delete--}}
+            {!! Form::open(['method'=>'DELETE', 'action'=>['AdminUsersController@destroy', $user->id]]) !!}
+
+                {{csrf_field()}}
+
+                <div class="form-group">
+
+                    {!! Form::submit('Delete user', ['class'=>'btn btn-danger col-sm-6']) !!}
 
                 </div>
 

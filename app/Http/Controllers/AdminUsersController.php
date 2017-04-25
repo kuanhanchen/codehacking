@@ -10,6 +10,7 @@ use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Session;
 
 class AdminUsersController extends Controller
 {
@@ -162,5 +163,26 @@ class AdminUsersController extends Controller
     public function destroy($id)
     {
         //
+        $user = User::findOrFail($id);
+
+        // in order to delete the image in public/images folder
+
+        // The public_path() function returns the fully qualified path to the public directory:
+        // public_path => /Users/KuanHanChen/Sites/laravel/codehacking/public
+
+        // cuz of getFileAttribute($photo) in Photo.php,
+        // $user->photo->file => http://localhost/~kuanhanchen/laravel/codehacking/public/images/file_name.jpg;
+        $splitFileName = explode('/', $user->photo->file);
+        $fileName = $splitFileName[sizeof($splitFileName)-2];
+
+        //fileName => file_name.jpg
+        //unlink(/Users/KuanHanChen/Sites/laravel/codehacking/public/images/file_name.jpg)
+        unlink(public_path() . '/images/' . $fileName);
+
+        $user->delete();
+
+        Session::flash('deleted_user', 'The user has been deleted');
+
+        return redirect('/admin/users');
     }
 }

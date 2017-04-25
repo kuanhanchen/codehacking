@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class Admin
 {
@@ -15,6 +16,21 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        // if login
+        if(Auth::check()){
+
+            //if is admin
+            if(Auth::user()->isAdmin()){
+
+                return $next($request);
+
+            }
+
+        }
+
+        // if not admin or not login,
+        // redirect to homepage instead of going to http://localhost/~kuanhanchen/laravel/codehacking/public/admin/users
+        return redirect('/');
+
     }
 }
