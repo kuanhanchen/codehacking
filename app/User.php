@@ -44,6 +44,8 @@ class User extends Authenticatable
 
         }
 
+        $this->attributes['password'] = $password;
+
     }
 
     public function isAdmin(){

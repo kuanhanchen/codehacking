@@ -62,7 +62,7 @@
 
                 <div class="form-group">
 
-                    {!! Form::submit('Edit Post', ['class'=>'btn btn-primary col-sm-6']) !!}
+                    {!! Form::submit('Update User', ['class'=>'btn btn-primary col-sm-6']) !!}
 
                 </div>
 
@@ -76,7 +76,7 @@
 
                 <div class="form-group">
 
-                    {!! Form::submit('Delete user', ['class'=>'btn btn-danger col-sm-6']) !!}
+                    {!! Form::submit('Delete User', ['class'=>'btn btn-danger col-sm-6']) !!}
 
                 </div>
 

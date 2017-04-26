@@ -173,7 +173,7 @@ class AdminUsersController extends Controller
         // cuz of getFileAttribute($photo) in Photo.php,
         // $user->photo->file => http://localhost/~kuanhanchen/laravel/codehacking/public/images/file_name.jpg;
         $splitFileName = explode('/', $user->photo->file);
-        $fileName = $splitFileName[sizeof($splitFileName)-2];
+        $fileName = $splitFileName[sizeof($splitFileName)-1];
 
         //fileName => file_name.jpg
         //unlink(/Users/KuanHanChen/Sites/laravel/codehacking/public/images/file_name.jpg)
